@@ -12,13 +12,22 @@ tag1.innerHTML = arrMenu[2].menu;
 tag2.innerHTML = arrMenu[0].menu;
 tag3.innerHTML = arrMenu[1].menu;
 
-let Value = prompt("Que menu desea ? ")
-let cantidad = prompt("Que cantidad ? ")
-if (Value = 1 ) {
+const boton1 = document.getElementById("btn");
+boton1.addEventListener("click", function(e) {
+	let cant = prompt("cuantos");
+   alert("Su total a pagar sera: " + cant*arrMenu[2].Precio )
+});
 
-   alert("Su costo sera de $" + arrMenu[2].Precio*cantidad)
-} else if (Value = 2) {
-   alert("Su costo sera de $" + arrMenu[0].Precio*cantidad)
-} else if (Value = 3) {
-   alert("Su costo sera de $" + arrMenu[1].Precio*cantidad)
-}
+
+
+const boton2 = document.getElementById("btn2");
+boton2.addEventListener("click", function(e) {
+	let cant = prompt("cuantos");
+   alert("Su total a pagar sera: " + cant*arrMenu[0].Precio )
+});
+
+const boton3 = document.getElementById("btn3");
+boton3.addEventListener("click", function(e) {
+	let cant = prompt("cuantos");
+   alert("Su total a pagar sera: " + cant*arrMenu[1].Precio )
+});
