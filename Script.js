@@ -46,7 +46,8 @@ boton3.addEventListener("click", function(e) {
 });
 
 
-const carrito = document.querySelector("#carro")
+const carro = document.querySelector("#carro")
 if (boton1 == true) {
+   carro.innerHTML
    `<p><a>${arrMenu[0].menu}</a><button id="remove">Remove</button></p>`
 }
