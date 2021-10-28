@@ -1,12 +1,15 @@
+
+
 let arrMenu = [
    {menu: "Menu Gourmet", Precio:3400, pic:"media/gourmet.jpg",num: 1 },
-   {menu: "Menu veggie", Precio: 2900, pic:"media/veggie.jpg",num: 2},
-   {menu: "Menu con Carne", Precio: 3200, pic:"media/carne.jpg",num: 3},
+   {menu: "Menu Veggie", Precio: 2900, pic:"media/veggie.jpg",num: 2},
+   {menu: "Menu Carne", Precio: 3200, pic:"media/carne.jpg",num: 3},
 ]
 
-const element = document.querySelector("#example");
+
+const element = document.getElementById("example");
 arrMenu.forEach ( el => {
-   element.innerHTML +=
+   element.insertAdjacentHTML( 'beforeend',
    `<div class="content container2" >
          <img src="${el.pic}">
          <h3 >${el.menu}</h3>
@@ -19,48 +22,83 @@ arrMenu.forEach ( el => {
             <li><i class="fa fa-star" aria-hidden="true"></i></li>
             <li><i class="fa fa-star" aria-hidden="true"></i></li>
          </ul>
-         <button class="buy-1" id="btn${el.num}">Buy Now</button>
+         <button class="buy-${el.num}" id="btn">Buy Now</button>
       </div>`
+   )
 });
 
 
 
-const boton1 = document.getElementById("btn1");
-boton1.addEventListener("click", function(e) {
-	let dir = prompt("intruduzca su direccion : ");
-   let tel = prompt("Introduzca su tel: ")
-   localStorage.setItem(dir+tel,arrMenu[0].menu)
-   if ( tel != [0-9]) {
-      alert("Solo se aceptan numeros");
-      localStorage.clear();
-   }
+let cart = [];
+
+$('.buy-1').on('click', () => {
+  cart.push(arrMenu[0]);
+  $('#aca').append(`
+  <div class="container del0" >
+      <div>
+      <img src="media/gourmet.jpg" alt="asdad">
+      </div>
+      <div class="container-card">
+         <ol>
+            <li>Menu:${arrMenu[0].menu}</li>
+            <li>Precio:${arrMenu[0].Precio}</li>
+         </ol>
+      </div>
+      <button onclick="myFunction0()"  class="end">Eliminar</button>
+      </div>
+  `)
 });
 
 
-
-const boton2 = document.getElementById("btn2");
-boton2.addEventListener("click", function(e) {
-	let dir = prompt("intruduzca su direccion: ");
-   localStorage.setItem(dir,arrMenu[1].menu);
-   if ( tel != [0-9]) {
-      alert("Solo se aceptan numeros");
-      localStorage.clear();
-   }
+$('.buy-2').on('click', () => {
+   cart.push(arrMenu[1]);
+   $('#aca').append(`
+   <div class="container del1" >
+      <div>
+      <img src="media/veggie.jpg" alt="asdad">
+      </div>
+      <div class="container-card">
+         <p>Menu:${arrMenu[1].menu}</p>
+         <p>Precio:${arrMenu[1].Precio}</p>
+      </div>
+      <button onclick="myFunction1()" class="end">Eliminar</button>
+      </div>
+   </div>
+`  )
 });
 
-const boton3 = document.getElementById("btn3");
-boton3.addEventListener("click", function(e) {
-	let dir = prompt("intruduzca su direccion: ");
-   localStorage.setItem(dir,arrMenu[2].menu);
-   if ( tel != [0-9]) {
-      alert("Solo se aceptan numeros");
-      localStorage.clear();
-   }
+$('.buy-3').on('click', () => {
+   cart.push(arrMenu[2]);
+   $('#aca').append(`
+   <div class="container del2" >
+      <div>
+      <img src="media/carne.jpg" alt="asdad">
+      </div>
+      <div class="container-card">
+         <p>Menu:${arrMenu[2].menu}</p>
+         <p>Precio:${arrMenu[2].Precio}</p>
+      </div>
+      <button onclick="myFunction2()"  class="end">Eliminar</button>
+      </div>
+   </div>
+`  )
 });
 
 
-////const carro = document.querySelector("#carro")
-///if (boton1 == true) {
-  /// carr
-   ///`<p><a>${arrMenu[0].menu}</a><button id="remove">Remove</button></p>`
-///}
+$(".header").prepend('<h5  style="display: none" >VIANDAS POP</h5>');
+$("h5").fadeIn(4000);
+
+
+function myFunction0() {
+   $('.del0').remove();
+}
+
+function myFunction1() {
+   $('.del1').remove();
+}
+
+function myFunction2() {
+   $('.del2').remove();
+}
+
+
